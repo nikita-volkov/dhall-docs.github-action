@@ -1,7 +1,7 @@
 # Dhall Documentation Generator Action
 
 [![GitHub Marketplace](https://img.shields.io/badge/Marketplace-dhall%20docs-blue?colorA=24292e&colorB=0366d6)](https://github.com/marketplace/actions/dhall-docs)
-[![CI](https://img.shields.io/github/actions/workflow/status/nikita-volkov/dhall-docs.github-action/release.yaml)](https://github.com/nikita-volkov/dhall-docs.github-action/actions)
+[![CI](https://img.shields.io/github/actions/workflow/status/nikita-volkov/dhall-docs.github-action/build.yaml)](https://github.com/nikita-volkov/dhall-docs.github-action/actions)
 
 A GitHub Action that generates beautiful documentation for [Dhall](https://dhall-lang.org/) packages using the `dhall-docs` tool. Perfect for automatically building and deploying Dhall package documentation to GitHub Pages.
 
