@@ -6,6 +6,9 @@ inputs:
     description: Path to source directory
     required: false
     default: .
+  package-name:
+    description: Package name
+    required: false
 outputs:
   path:
     description: Path to the generated documentation directory
@@ -14,3 +17,4 @@ runs:
   image: docker://ghcr.io/nikita-volkov/dhall-docs.github-action:1cdad5d9d3fd14d28e5ebce96260add166890dba
   env:
     input: ${{ inputs.input }}
+    package_name: ${{ inputs.package-name }}

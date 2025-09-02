@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-dhall-docs --input "$input" --output-link docs
+dhall-docs --input "$input" --package-name "$package_name"
 
 # Check if docs is a symlink (early termination if not)
 if [ ! -L "docs" ]; then
