@@ -16,9 +16,10 @@ This repository contains a GitHub Action that generates documentation for Dhall 
 ### Action Behavior
 
 1. Takes an optional `input` parameter (path to source directory, defaults to current directory)
-2. Runs `dhall-docs` tool to generate documentation
-3. Converts symlinked output to real directory structure
-4. Provides command output status
+2. Runs `dhall-docs` tool to generate documentation with symlinked output
+3. Resolves the symlink to get the actual documentation directory path
+4. Outputs the resolved path via the `path` output parameter
+5. Provides command execution status and logging
 
 ## Development Workflow
 
@@ -41,11 +42,14 @@ The action uses a pre-built Docker image hosted on GitHub Container Registry. Th
 ## Key Files and Their Purpose
 
 - **action.yml**: Defines the GitHub Action interface, inputs, outputs, and Docker image reference
+  - Input: `input` (optional path to source directory, defaults to current directory)
+  - Output: `path` (path to the generated documentation directory)
 - **docker/Dockerfile**: Sets up the runtime environment with dhall-docs and dependencies
 - **docker/entrypoint.bash**: 
-  - Executes dhall-docs with provided input
-  - Handles symlink conversion for GitHub Actions compatibility
-  - Sets appropriate output variables
+  - Executes dhall-docs with provided input using --output-link option
+  - Resolves symlinked output to actual directory path using readlink
+  - Sets GitHub Actions output with resolved documentation path
+  - Provides comprehensive error handling and logging
 - **LICENSE**: MIT license for the project
 
 ## Dependencies
@@ -93,22 +97,27 @@ Currently, the repository does not include automated tests. When adding tests, c
 ### Modifying Entry Point Logic
 1. Edit docker/entrypoint.bash
 2. Ensure error handling is maintained
-3. Test symlink conversion functionality
-4. Verify GitHub Actions output format
+3. Test dhall-docs execution with --output-link option
+4. Verify symlink resolution and path output functionality
+5. Verify GitHub Actions output format
 
 ### Action Interface Changes
 1. Update action.yml inputs/outputs as needed
 2. Maintain backwards compatibility when possible
 3. Update documentation if interface changes
+4. Consider impact on workflows using the `path` output
 
 ## Troubleshooting
 
 ### Common Issues
-- **Symlink problems**: The entrypoint script includes logic to convert symlinks to real directories for GitHub Actions compatibility
-- **Permission issues**: The script checks for write permissions before attempting file operations
+- **Symlink problems**: The entrypoint script uses dhall-docs --output-link and resolves symlinks to provide actual directory paths
+- **Permission issues**: The script checks for symlink existence and readability before attempting path resolution
 - **Build failures**: Usually related to cabal dependencies or Ubuntu package availability
+- **Output path issues**: Ensure dhall-docs creates the expected symlinked output structure
 
 ### Debugging
 - Check Docker build logs for dependency installation issues
 - Verify dhall-docs can process the input files
-- Ensure proper file permissions in the output directory
+- Ensure dhall-docs creates proper symlinked output with --output-link option
+- Test symlink resolution and path output functionality
+- Verify GitHub Actions output variables are set correctly
