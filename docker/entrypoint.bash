@@ -6,7 +6,7 @@ function convert_symlink_to_dir {
 
     # Get the target path of the symlink
     local TARGET_DIR
-    TARGET_DIR=$(readlink "$SYMLINK")
+    TARGET_DIR=$(readlink -f "$SYMLINK")
 
     # Check if the input is a symlink
     if [ ! -L "$SYMLINK" ]; then
@@ -17,6 +17,16 @@ function convert_symlink_to_dir {
     # Check if the target directory exists
     if [ ! -d "$TARGET_DIR" ]; then
         echo "Error: Target directory '$TARGET_DIR' does not exist."
+        return 1
+    fi
+
+    # Check write permissions for the current directory and target
+    if [ ! -w "$(dirname "$SYMLINK")" ]; then
+        echo "Error: No write permission in the directory containing '$SYMLINK'. Try running with sudo."
+        return 1
+    fi
+    if [ ! -w "$TARGET_DIR" ]; then
+        echo "Error: No write permission for target directory '$TARGET_DIR'. Try running with sudo."
         return 1
     fi
 
@@ -39,7 +49,7 @@ function convert_symlink_to_dir {
     # Verify the new directory
     if [ -d "$SYMLINK" ]; then
         echo "Success: '$SYMLINK' is now a real directory with the target contents."
-        ls -lha | grep "$SYMLINK"
+        ls -lha --color=auto | grep "$SYMLINK"
         return 0
     else
         echo "Error: Failed to create directory '$SYMLINK'."
