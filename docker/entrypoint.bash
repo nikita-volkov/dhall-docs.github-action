@@ -58,7 +58,7 @@ function convert_symlink_to_dir {
 }
 
 function main {
-  dhall-docs --input "$input" --output docs
+  dhall-docs --input "$input" --output-link docs
   convert_symlink_to_dir docs
 }
 
