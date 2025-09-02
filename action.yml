@@ -6,10 +6,6 @@ inputs:
     description: Path to source directory
     required: false
     default: .
-  upload-artifact:
-    description: Whether to upload documentation as workflow artifact
-    required: false
-    default: 'false'
 outputs:
   path:
     description: Path to the generated documentation directory
@@ -18,4 +14,3 @@ runs:
   image: docker://ghcr.io/nikita-volkov/dhall-docs.github-action:579bd4baa5b6c222b6909ede3df2817202f9810f
   env:
     input: ${{ inputs.input }}
-    upload_artifact: ${{ inputs.upload-artifact }}
