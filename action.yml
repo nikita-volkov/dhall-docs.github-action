@@ -1,0 +1,6 @@
+name: Execute dhall-docs
+description: Generate documentation for Dhall packages
+author: Nikita Volkov
+runs:
+  using: docker
+  image: ""
