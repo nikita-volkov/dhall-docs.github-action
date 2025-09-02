@@ -11,6 +11,6 @@ outputs:
     description: Command output
 runs:
   using: docker
-  image: docker://ghcr.io/nikita-volkov/dhall-docs.github-action:3bdb31a3a81af91adde5754d46ab3665ac18efc8
+  image: docker://ghcr.io/nikita-volkov/dhall-docs.github-action:1ba562d3a31d55a4a89a4c1f1b4c34716d56364d
   env:
     input: ${{ inputs.input }}
