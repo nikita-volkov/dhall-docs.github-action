@@ -28,7 +28,6 @@ else
   echo "Warning: Source directory $docs_path is empty or doesn't exist"
 fi
 
-# Set GitHub Actions output to the docs directory
-current_dir=$(pwd)
-echo "path=$current_dir/docs" >> "$GITHUB_OUTPUT"
-echo "Set output path to: $current_dir/docs"
+# Set GitHub Actions output to the docs directory (relative to workspace)
+echo "path=docs" >> "$GITHUB_OUTPUT"
+echo "Set output path to: docs"
