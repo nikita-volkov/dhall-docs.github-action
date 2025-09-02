@@ -7,10 +7,10 @@ inputs:
     required: false
     default: .
 outputs:
-  output:
-    description: Command output
+  path:
+    description: Path to the generated documentation directory
 runs:
   using: docker
-  image: docker://ghcr.io/nikita-volkov/dhall-docs.github-action:575a962f1cc5337ed609a374524daa6f7be1fe39
+  image: docker://ghcr.io/nikita-volkov/dhall-docs.github-action:8ecfef49113adf8dcd91f4ce9de94b6879851525
   env:
     input: ${{ inputs.input }}
