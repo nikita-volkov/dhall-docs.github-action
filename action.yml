@@ -6,8 +6,11 @@ inputs:
     description: Path to source directory
     required: false
     default: .
+outputs:
+  path:
+    description: Path to the generated documentation directory
 runs:
   using: docker
-  image: docker://ghcr.io/nikita-volkov/dhall-docs.github-action:8ecfef49113adf8dcd91f4ce9de94b6879851525
+  image: docker://ghcr.io/nikita-volkov/dhall-docs.github-action:33cb81e4741839cb6b93e74498cf356ee7d58175
   env:
     input: ${{ inputs.input }}
