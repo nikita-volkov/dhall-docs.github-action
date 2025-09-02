@@ -14,7 +14,7 @@ outputs:
     description: Path to the generated documentation directory
 runs:
   using: docker
-  image: docker://ghcr.io/nikita-volkov/dhall-docs.github-action:1cdad5d9d3fd14d28e5ebce96260add166890dba
+  image: docker://ghcr.io/nikita-volkov/dhall-docs.github-action:d568b0b324620b27d993c69ff0806cea16969086
   env:
     input: ${{ inputs.input }}
     package_name: ${{ inputs.package-name }}
