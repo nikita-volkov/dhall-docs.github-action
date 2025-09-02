@@ -3,4 +3,4 @@ description: Generate documentation for Dhall packages
 author: Nikita Volkov
 runs:
   using: docker
-  image: ""
+  image: docker://ghcr.io/nikita-volkov/dhall-docs.github-action:ef7a6ad6198295cd363745f9855a037c8b768875
