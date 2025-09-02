@@ -1,3 +1,3 @@
 #!/bin/bash -e
 
-echo name=output::"$(dhall-docs --input $dir)" >> $GITHUB_OUTPUT
+echo name=output::"$(dhall-docs --input $input)" >> $GITHUB_OUTPUT

@@ -2,7 +2,7 @@ name: Execute dhall-docs
 description: Generate documentation for Dhall packages
 author: Nikita Volkov
 inputs:
-  dir:
+  input:
     description: Path to source directory
     required: false
     default: .
@@ -13,4 +13,4 @@ runs:
   using: docker
   image: docker://ghcr.io/nikita-volkov/dhall-docs.github-action:ef7a6ad6198295cd363745f9855a037c8b768875
   env:
-    dir: ${{ inputs.dir }}
+    input: ${{ inputs.input }}
