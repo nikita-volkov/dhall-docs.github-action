@@ -1,8 +1,7 @@
 # Dhall Documentation Generator Action
 
-[![GitHub Marketplace](https://img.shields.io/badge/Marketplace-Dhall%20Docs%20Generator-blue.svg?colorA=24292e&colorB=0366d6&style=flat&longCache=true&logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAM6wAADOsB5dZE0gAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAERSURBVCiRhZG/SsMxFEZPfsVJ61jbxaF0cRQRcRJ9hlYn30IHN/+9iquDCOIsblIrOjqKgy5aKoJQj4n3NQ+4fDl3OF0+fDl3ZpJdOXxUwxkFPEg7f5qGTaNOiKiqBBVvU7OiK74vVmDCNlRLSSTh1vHVj+pqN4S3NHdNWLhS9qcPwZVNy/Vf3IZ8lf8O/N0v/9Gvf3Y8lHTaS8GUXZ7lU8gNtA+gTNmZ/8t/w7m8V6U/e/hY8Uo8k1lNxvP+BMBJ6U/oT4v8R9xGlcFzr7M3VYe28vQMkGvVy6MPcQVOwPP5iGLgn5fofzR+PO3p9j0Dj4fQ7Zc9z3Hb3o5v8Gc2FHa6/yW2n8B6Cj9PfgEhp02FxfJoWAAAAABJRU5ErkJggg==)](https://github.com/marketplace/actions/dhall-docs-generator)
+[![GitHub Marketplace](https://img.shields.io/badge/Marketplace-dhall%20docs-blue?colorA=24292e&colorB=0366d6)](https://github.com/marketplace/actions/dhall-docs)
 [![CI](https://img.shields.io/github/actions/workflow/status/nikita-volkov/dhall-docs.github-action/release.yaml)](https://github.com/nikita-volkov/dhall-docs.github-action/actions)
-[![License](https://img.shields.io/github/license/nikita-volkov/dhall-docs.github-action)](LICENSE)
 
 A GitHub Action that generates beautiful documentation for [Dhall](https://dhall-lang.org/) packages using the `dhall-docs` tool. Perfect for automatically building and deploying Dhall package documentation to GitHub Pages.
 
