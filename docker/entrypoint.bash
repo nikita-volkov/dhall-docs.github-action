@@ -62,4 +62,16 @@ function main {
   convert_symlink_to_dir docs
 }
 
-echo name=output::"$(main)" >> $GITHUB_OUTPUT
+# Run main function and capture exit code
+main
+exit_code=$?
+
+# Set action output based on success/failure
+if [ $exit_code -eq 0 ]; then
+  echo "name=output::Documentation generated successfully" >> $GITHUB_OUTPUT
+else
+  echo "name=output::Documentation generation failed" >> $GITHUB_OUTPUT
+fi
+
+# Exit with the same code as main function
+exit $exit_code
