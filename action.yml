@@ -6,9 +6,6 @@ inputs:
     description: Path to source directory
     required: false
     default: .
-outputs:
-  output:
-    description: Command output
 runs:
   using: docker
   image: docker://ghcr.io/nikita-volkov/dhall-docs.github-action:575a962f1cc5337ed609a374524daa6f7be1fe39

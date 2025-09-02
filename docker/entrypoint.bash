@@ -68,9 +68,9 @@ exit_code=$?
 
 # Set action output based on success/failure
 if [ $exit_code -eq 0 ]; then
-  echo "name=output::Documentation generated successfully" >> $GITHUB_OUTPUT
+  echo "Documentation generated successfully"
 else
-  echo "name=output::Documentation generation failed" >> $GITHUB_OUTPUT
+  echo "Documentation generation failed"
 fi
 
 # Exit with the same code as main function
