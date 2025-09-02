@@ -1,4 +1,4 @@
-name: Execute dhall-docs
+name: dhall-docs
 description: Generate documentation for Dhall packages
 author: Nikita Volkov
 branding:
