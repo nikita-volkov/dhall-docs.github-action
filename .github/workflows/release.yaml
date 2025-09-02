@@ -33,9 +33,10 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: docker
-          platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
       - name: Update action.yml
         uses: fjogeleit/yaml-update-action@v0.13.2
