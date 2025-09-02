@@ -1,6 +1,9 @@
 name: Execute dhall-docs
 description: Generate documentation for Dhall packages
 author: Nikita Volkov
+branding:
+  icon: book-open
+  color: blue
 inputs:
   input:
     description: Path to source directory
