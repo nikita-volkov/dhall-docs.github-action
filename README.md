@@ -6,19 +6,10 @@
 
 A GitHub Action that generates beautiful documentation for [Dhall](https://dhall-lang.org/) packages using the `dhall-docs` tool. Perfect for automatically building and deploying Dhall package documentation to GitHub Pages.
 
-## ✨ Features
-
-- 🚀 **Easy to use**: Simple one-step documentation generation
-- 📚 **Beautiful output**: Generates clean, navigable HTML documentation
-- 🔧 **Configurable**: Supports custom input paths and package names
-- 🐳 **Docker-based**: Consistent environment with all dependencies included
-- 📦 **Marketplace ready**: Optimized for GitHub Actions Marketplace
 
 ## 📖 Real-World Example
 
-See this action in use with the **[typeclasses.dhall](https://github.com/nikita-volkov/typeclasses.dhall)** repository, which uses this action to automatically generate and deploy documentation to **[GitHub Pages](https://nikita-volkov.github.io/typeclasses.dhall/)**.
-
-The typeclasses repository demonstrates a complete documentation workflow using the [deploy-dhall-docs-to-github-pages](https://github.com/nikita-volkov/deploy-dhall-docs-to-github-pages.github-actions-workflow) workflow that leverages this action.
+See this action in use by the **[typeclasses.dhall](https://github.com/nikita-volkov/typeclasses.dhall)** repository, which deploys documentation to **[GitHub Pages](https://nikita-volkov.github.io/typeclasses.dhall/)**. It achieves that by using the [deploy-dhall-docs-to-github-pages](https://github.com/nikita-volkov/deploy-dhall-docs-to-github-pages.github-actions-workflow) workflow that leverages this action.
 
 ## 🚀 Quick Start
 
@@ -70,7 +61,7 @@ jobs:
 | Input | Description | Required | Default |
 |-------|-------------|----------|---------|
 | `input` | Path to the Dhall source directory | No | `.` (current directory) |
-| `package-name` | Name of the package for documentation | No | (auto-detected) |
+| `package-name` | Name of the package for documentation | No |  |
 
 ## 📤 Outputs
 
@@ -125,25 +116,3 @@ This demonstrates how easy it is to maintain up-to-date documentation for Dhall 
 2. **Documentation Generation**: Uses `dhall-docs` (version 1.0.12) to generate comprehensive HTML documentation
 3. **Output Preparation**: Processes the generated documentation and provides the output path
 4. **Integration Ready**: The output can be easily integrated with deployment actions for GitHub Pages or other hosting solutions
-
-## 🔍 Under the Hood
-
-This action:
-- Runs in a Ubuntu 25.10 container with Dhall tools pre-installed
-- Uses `dhall-docs` 1.0.12 for consistent documentation generation
-- Handles symlink resolution for reliable output path detection
-- Provides comprehensive logging for debugging
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 👤 Author
-
-**Nikita Volkov**
-
-- GitHub: [@nikita-volkov](https://github.com/nikita-volkov)
-
----
-
-💡 **Tip**: Check out the [typeclasses.dhall documentation](https://nikita-volkov.github.io/typeclasses.dhall/) to see the beautiful documentation this action can generate for your Dhall packages!
