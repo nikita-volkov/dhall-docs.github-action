@@ -8,7 +8,7 @@ A GitHub Action that generates beautiful documentation for [Dhall](https://dhall
 
 ## 📖 Real-World Example
 
-See this action in use by the **[typeclasses.dhall](https://github.com/nikita-volkov/typeclasses.dhall)** repository, which deploys documentation to **[GitHub Pages](https://nikita-volkov.github.io/typeclasses.dhall/)**. It achieves that by using the [deploy-dhall-docs-to-github-pages](https://github.com/nikita-volkov/deploy-dhall-docs-to-github-pages.github-actions-workflow) workflow that leverages this action.
+See this action in use by the **[typeclasses](https://github.com/nikita-volkov/typeclasses.dhall)** repository, which deploys documentation to **[GitHub Pages](https://nikita-volkov.github.io/typeclasses.dhall/)**. It achieves that by using the **[deploy-dhall-docs-to-github-pages](https://github.com/nikita-volkov/deploy-dhall-docs-to-github-pages.github-actions-workflow)** workflow that leverages this action.
 
 ## 🚀 Quick Start
 
@@ -28,7 +28,7 @@ jobs:
       - uses: actions/checkout@v4
       
       - name: Generate Dhall Documentation
-        uses: nikita-volkov/dhall-docs.github-action@v0.3
+        uses: nikita-volkov/dhall-docs.github-action@v1
         with:
           input: .                    # Path to your Dhall source files
           package-name: my-package    # Name of your package
@@ -48,7 +48,7 @@ on:
 
 jobs:
   build-docs:
-    uses: nikita-volkov/deploy-dhall-docs-to-github-pages.github-actions-workflow/.github/workflows/main.yaml@master
+    uses: nikita-volkov/deploy-dhall-docs-to-github-pages.github-actions-workflow/.github/workflows/main.yaml@v1
     with:
       input: src                # Path to your Dhall source directory
       package-name: my-package  # Your package name
@@ -75,7 +75,7 @@ jobs:
 ```yaml
 - name: Generate Documentation
   id: docs
-  uses: nikita-volkov/dhall-docs.github-action@v0.3
+  uses: nikita-volkov/dhall-docs.github-action@v1
   with:
     input: src
     package-name: my-dhall-lib
@@ -91,23 +91,11 @@ jobs:
 
 ```yaml
 - name: Generate Documentation for Source Directory
-  uses: nikita-volkov/dhall-docs.github-action@v0.3
+  uses: nikita-volkov/dhall-docs.github-action@v1
   with:
     input: dhall-src
     package-name: my-custom-package
 ```
-
-## 🏆 Success Stories
-
-### typeclasses.dhall
-
-The [**typeclasses.dhall**](https://github.com/nikita-volkov/typeclasses.dhall) repository showcases this action perfectly:
-
-- **Repository**: https://github.com/nikita-volkov/typeclasses.dhall
-- **Live Documentation**: https://nikita-volkov.github.io/typeclasses.dhall/
-- **Workflow**: Automatically builds and deploys documentation on every push to master
-
-This demonstrates how easy it is to maintain up-to-date documentation for Dhall packages using this action.
 
 ## 🛠️ How It Works
 
