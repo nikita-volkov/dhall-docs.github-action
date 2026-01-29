@@ -61,6 +61,7 @@ jobs:
 |-------|-------------|----------|---------|
 | `input` | Path to the Dhall source directory | No | `.` (current directory) |
 | `package-name` | Name of the package for documentation | No |  |
+| `add-repo-reference` | Add repository reference with commit hash and timestamp to the documentation navigation bar | No | `false` |
 
 ## 📤 Outputs
 
@@ -69,6 +70,21 @@ jobs:
 | `path` | Path to the generated documentation directory |
 
 ## 🔧 Advanced Usage
+
+### Adding Repository Reference
+
+You can add a repository reference link (with commit hash and timestamp) to the documentation navigation bar:
+
+```yaml
+- name: Generate Documentation with Repository Reference
+  uses: nikita-volkov/dhall-docs.github-action@v1
+  with:
+    input: src
+    package-name: my-dhall-lib
+    add-repo-reference: true
+```
+
+This will add a link to the specific commit and a timestamp to the navigation bar of the generated documentation, making it easy to track which version of the code the documentation was generated from.
 
 ### Using the Output Path
 
