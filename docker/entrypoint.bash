@@ -34,20 +34,27 @@ if [ "$add_repo_reference" = "true" ]; then
   
   # Get short commit hash (first 7 characters)
   if [ -n "$github_sha" ]; then
-    SHORT_SHA="${github_sha:0:7}"
-    GENERATION_TIME=$(date -u '+%Y-%m-%dT%H:%M:%SZ')
+    short_sha="${github_sha:0:7}"
+    generation_time=$(date -u '+%Y-%m-%dT%H:%M:%SZ')
     
     # Prepare the repository URL
-    REPO_URL="${github_server_url}/${github_repository}/tree/${github_sha}"
+    repo_url="${github_server_url}/${github_repository}/tree/${github_sha}"
     
-    echo "Commit: $SHORT_SHA"
-    echo "Generated: $GENERATION_TIME"
-    echo "Repository URL: $REPO_URL"
+    echo "Commit: $short_sha"
+    echo "Generated: $generation_time"
+    echo "Repository URL: $repo_url"
     
     # Add repository reference with short commit hash and timestamp to HTML files
-    find "docs" -name "*.html" -type f -exec sed -i "s#<a id=\"switch-light-dark-mode\" class=\"nav-option\">Switch Light/Dark Mode</a>#<a id=\"switch-light-dark-mode\" class=\"nav-option\">Switch Light/Dark Mode</a> <a href=\"${REPO_URL}\" target=\"_blank\" title=\"Commit: ${SHORT_SHA} | Generated: ${GENERATION_TIME}\" class=\"nav-option\">${SHORT_SHA}</a> <span class=\"nav-option\" style=\"font-size: 0.8em; opacity: 0.7;\">${GENERATION_TIME}</span>#g" {} \;
+    # Using | as delimiter to avoid conflicts with / in URLs
+    find "docs" -name "*.html" -type f -exec sed -i "s|<a id=\"switch-light-dark-mode\" class=\"nav-option\">Switch Light/Dark Mode</a>|<a id=\"switch-light-dark-mode\" class=\"nav-option\">Switch Light/Dark Mode</a> <a href=\"${repo_url}\" target=\"_blank\" title=\"Commit: ${short_sha} | Generated: ${generation_time}\" class=\"nav-option\">${short_sha}</a> <span class=\"nav-option\" style=\"font-size: 0.8em; opacity: 0.7;\">${generation_time}</span>|g" {} \;
     
-    echo "Repository reference added to HTML files"
+    # Check if any HTML files were modified
+    html_count=$(find "docs" -name "*.html" -type f | wc -l)
+    if [ "$html_count" -gt 0 ]; then
+      echo "Repository reference added to $html_count HTML file(s)"
+    else
+      echo "Warning: No HTML files found in docs directory"
+    fi
   else
     echo "Warning: github_sha not available, skipping repository reference"
   fi
