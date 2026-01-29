@@ -45,8 +45,9 @@ if [ "$add_repo_reference" = "true" ]; then
     echo "Repository URL: $repo_url"
     
     # Add repository reference with short commit hash and timestamp to HTML files
-    # Using | as delimiter to avoid conflicts with / in URLs
-    find "docs" -name "*.html" -type f -exec sed -i "s|<a id=\"switch-light-dark-mode\" class=\"nav-option\">Switch Light/Dark Mode</a>|<a id=\"switch-light-dark-mode\" class=\"nav-option\">Switch Light/Dark Mode</a> <a href=\"${repo_url}\" target=\"_blank\" title=\"Commit: ${short_sha} | Generated: ${generation_time}\" class=\"nav-option\">${short_sha}</a> <span class=\"nav-option\" style=\"font-size: 0.8em; opacity: 0.7;\">${generation_time}</span>|g" {} \;
+    # Using @ as delimiter to avoid conflicts with / in URLs and | in attributes
+    replacement_html="<a id=\"switch-light-dark-mode\" class=\"nav-option\">Switch Light/Dark Mode</a> <a href=\"${repo_url}\" target=\"_blank\" title=\"Commit: ${short_sha} - Generated: ${generation_time}\" class=\"nav-option\">${short_sha}</a> <span class=\"nav-option\" style=\"font-size: 0.8em; opacity: 0.7;\">${generation_time}</span>"
+    find "docs" -name "*.html" -type f -exec sed -i "s@<a id=\"switch-light-dark-mode\" class=\"nav-option\">Switch Light/Dark Mode</a>@${replacement_html}@g" {} \;
     
     # Check if any HTML files were modified
     html_count=$(find "docs" -name "*.html" -type f | wc -l)
